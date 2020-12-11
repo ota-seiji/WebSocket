@@ -13,8 +13,10 @@ export class WebSocketStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    // 画像アップロード先のバケット
     const webSocketBucket = new s3.Bucket(this, "webSocketBucket");
 
+    // コネクションIDを保持するテーブル
     const webSocketConnection = new dynamodb.Table(
       this,
       "webSocketConnection",
@@ -32,25 +34,26 @@ export class WebSocketStack extends cdk.Stack {
     const name = "web-socket-api";
     const stageName = "dev";
 
-    // Example API definition
+    // Web Socket用のAPI Gateway
     const api = new apigatewayv2.CfnApi(this, name, {
       name: "WebSocketApi",
       protocolType: "WEBSOCKET",
       routeSelectionExpression: "$request.body.action",
     });
 
-    // $connectルートのLambda
+    // $connectのLambda
     const connectLambda = createWebSocketConnectLambda(
       this,
       webSocketConnection
     );
 
-    // $disconnectルートのLambda
+    // $disconnectのLambda
     const disconnectLambda = createWebSocketDisconnectLambda(
       this,
       webSocketConnection
     );
 
+    // s3への画像アップロード契機で動くLambda
     const resouce = `arn:aws:execute-api:${region}:${this.account}:${api.ref}/${stageName}/POST/@connections/*`;
     const endpoint = `https://${api.ref}.execute-api.${region}.amazonaws.com/${stageName}`;
     createSendMessageLambda(
@@ -72,6 +75,7 @@ export class WebSocketStack extends cdk.Stack {
     });
     role.addToPolicy(policy);
 
+    // $connectルート
     const connectRoute = createRoute(
       this,
       "connect",
@@ -81,6 +85,7 @@ export class WebSocketStack extends cdk.Stack {
       `arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${connectLambda.functionArn}/invocations`
     );
 
+    // $disconnectルート
     const disconnectRoute = createRoute(
       this,
       "disconnect",

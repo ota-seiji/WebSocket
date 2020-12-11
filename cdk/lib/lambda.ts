@@ -34,7 +34,7 @@ export function createWebSocketDisconnectLambda(
     "web-socket-ondisconnect",
     {
       code: new lambda.AssetCode("lib/handler"),
-      handler: "webSocket/onDisconnect.handler",
+      handler: "webSocket/disconnect.handler",
       runtime: lambda.Runtime.NODEJS_12_X,
       environment: {
         TABLE_NAME: table.tableName,

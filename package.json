@@ -3,11 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "license": "UNLICENSED",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": ["app/", "cdk/"],
   "scripts": {
     "app:start": "yarn workspace app start",
     "app:build": "yarn workspace app build",

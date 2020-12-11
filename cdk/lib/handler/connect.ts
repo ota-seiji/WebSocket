@@ -11,6 +11,7 @@ export async function handler(event: any): Promise<any> {
       TableName: process.env.TABLE_NAME || "",
       Item: {
         connectionId: event.requestContext.connectionId,
+        date: new Date().toISOString()
       },
     })
     .promise();
