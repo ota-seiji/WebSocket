@@ -5,10 +5,7 @@
   "license": "UNLICENSED",
   "workspaces": ["app/", "cdk/"],
   "scripts": {
-    "app:start": "yarn workspace app start",
-    "app:build": "yarn workspace app build",
-    "app:lint": "yarn workspace app lint",
-    "app:format": "yarn workspace app format",
-    "cdk:deploy": "yarn workspace cdk deploy"
+    "cdk:deploy": "yarn workspace cdk deploy",
+    "app:start": "yarn workspace app start"
   }
 }
