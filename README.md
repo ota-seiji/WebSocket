@@ -2,7 +2,7 @@
 
 - 以下のファイルの接続先エンドポイントを修正してください
 
-  [WebSocketComponent](/app/webSocketComponet/webSocketComponet.ts)
+  [WebSocketComponent](/app/src/webSocketComponet/webSocketComponet.ts)
 
 - CDKをデプロイ
 
