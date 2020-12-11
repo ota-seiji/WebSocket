@@ -1,0 +1,64 @@
+Arguments: 
+  /Users/ota.seiji/.nodebrew/node/v12.3.0/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js add @aws-cdk/aws-lambd
+
+PATH: 
+  /usr/local/opt/mysql-client/bin:/Users/ota.seiji/.nodebrew/current/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/opt/mysql-client/bin:/Users/ota.seiji/.nodebrew/current/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.3.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@aws-cdk%2faws-lambd: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:66987:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:140748:22)
+      at Request.emit (events.js:200:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:141720:10)
+      at Request.emit (events.js:200:13)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:141642:12)
+      at Object.onceWrapper (events.js:288:20)
+      at IncomingMessage.emit (events.js:205:15)
+      at endReadableNT (_stream_readable.js:1137:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:9)
+
+npm manifest: 
+  {
+    "name": "cdk",
+    "version": "0.1.0",
+    "bin": {
+      "cdk": "bin/cdk.js"
+    },
+    "scripts": {
+      "build": "tsc",
+      "watch": "tsc -w",
+      "test": "jest",
+      "cdk": "cdk",
+      "clean": "tsc --build --clean",
+      "deploy": "yarn build && cdk deploy && yarn clean"
+    },
+    "devDependencies": {
+      "@aws-cdk/assert": "1.73.0",
+      "@types/jest": "^26.0.10",
+      "@types/node": "10.17.27",
+      "jest": "^26.4.2",
+      "ts-jest": "^26.2.0",
+      "aws-cdk": "1.73.0",
+      "ts-node": "^8.1.0",
+      "typescript": "~3.9.7"
+    },
+    "dependencies": {
+      "@aws-cdk/core": "1.73.0",
+      "source-map-support": "^0.5.16"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
